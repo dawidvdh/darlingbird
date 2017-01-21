@@ -1,14 +1,17 @@
+const VALIDATION_TOKEN = process.env.MESSENGER_VALIDATION_TOKEN;
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const MESSENGER_APP_SECRET = process.env.MESSENGER_APP_SECRET;
+const DROPBOX_KEY = process.env.DROPBOX_KEY;
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const https = require('https');
 
 const app = express();
-app.use(bodyParser.json({ verify: verifyRequestSignature }));
+const dbx = new Dropbox({ accessToken: DROPBOX_KEY });
 
-const VALIDATION_TOKEN = process.env.MESSENGER_VALIDATION_TOKEN;
-const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-const MESSENGER_APP_SECRET = process.env.MESSENGER_APP_SECRET;
+app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
 app.get('/', function (req, res) {
 	res.send('Hello World!');
