@@ -7,6 +7,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const https = require('https');
+const Dropbox = require('dropbox');
 
 const app = express();
 const dbx = new Dropbox({ accessToken: DROPBOX_KEY });
