@@ -1,5 +1,5 @@
 const VALIDATION_TOKEN = process.env.MESSENGER_VALIDATION_TOKEN;
-const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const PAGE_ACCESS_TOKEN = process.env.MESSENGER_PAGE_ACCESS_TOKEN;
 const MESSENGER_APP_SECRET = process.env.MESSENGER_APP_SECRET;
 const DROPBOX_KEY = process.env.DROPBOX_KEY;
 
@@ -9,6 +9,7 @@ const crypto = require('crypto');
 const https = require('https');
 const Dropbox = require('dropbox');
 const request = require('request');
+const moment = require('moment');
 
 const app = express();
 const dbx = new Dropbox({ accessToken: DROPBOX_KEY });
@@ -130,7 +131,7 @@ function receivedMessage(event) {
 		for (var i = 0, len = messageAttachments.length; i < len; i++) {
 			const attachement = messageAttachments[i];
 
-			const fileName = senderID + '-' + timeOfMessage + mediaType(attachement.type);
+			const fileName = senderID + '-' + moment(timeOfMessage, "MM-DD-YYYY") + mediaType(attachement.type);
 
 			https.get(attachement.payload.url, function (res) {
 				const chunks = [];
