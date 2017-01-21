@@ -125,6 +125,8 @@ function receivedMessage(event) {
 	const timeOfMessage = event.timestamp;
 	const message = event.message;
 
+	console.log(event);
+
 	const messageAttachments = message.attachments;
 
 	if (messageAttachments) {
