@@ -1,0 +1,30 @@
+{
+  "name": "darlingbird",
+  "version": "1.0.0",
+  "description": "Facebook Messenger Bot to save media content to dropbox",
+  "main": "app.js",
+	"private": true,
+  "scripts": {
+		"start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawidvdh/darlingbird.git"
+  },
+  "author": "Dawid van der Hoven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dawidvdh/darlingbird/issues"
+  },
+  "homepage": "https://github.com/dawidvdh/darlingbird#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "crypto": "^0.0.3",
+    "dropbox": "^2.5.0",
+    "express": "^4.14.0"
+  },
+	"engines": {
+    "node": "~7.4.0"
+  }
+}
