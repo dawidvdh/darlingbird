@@ -133,7 +133,7 @@ function receivedMessage(event) {
 		for (var i = 0, len = messageAttachments.length; i < len; i++) {
 			const attachement = messageAttachments[i];
 
-			const fileName = senderID + '-' + timeOfMessage + mediaType(attachement.type);
+			const fileName = senderID + '_' + timeOfMessage + mediaType(attachement.type);
 
 			https.get(attachement.payload.url, function (res) {
 				const chunks = [];
