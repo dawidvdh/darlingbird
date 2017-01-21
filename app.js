@@ -122,7 +122,7 @@ function mediaType(type) {
 function receivedMessage(event) {
 	const senderID = event.sender.id;
 	const recipientID = event.recipient.id;
-	const timeOfMessage = event.timestamp;
+	const timeOfMessage = moment.unix(event.timestamp).format("DD-MM-YYYY");
 	const message = event.message;
 
 	console.log(event.timestamp);
@@ -133,7 +133,7 @@ function receivedMessage(event) {
 		for (var i = 0, len = messageAttachments.length; i < len; i++) {
 			const attachement = messageAttachments[i];
 
-			const fileName = senderID + '-' + moment(timeOfMessage, "MM-DD-YYYY") + mediaType(attachement.type);
+			const fileName = senderID + '-' + timeOfMessage + mediaType(attachement.type);
 
 			https.get(attachement.payload.url, function (res) {
 				const chunks = [];
