@@ -8,6 +8,7 @@ app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
 const VALIDATION_TOKEN = process.env.MESSENGER_VALIDATION_TOKEN;
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const MESSENGER_APP_SECRET = process.env.MESSENGER_APP_SECRET;
 
 app.get('/', function (req, res) {
 	res.send('Hello World!');
@@ -73,7 +74,7 @@ function verifyRequestSignature(req, res, buf) {
 		var method = elements[0];
 		var signatureHash = elements[1];
 
-		var expectedHash = crypto.createHmac('sha1', APP_SECRET)
+		var expectedHash = crypto.createHmac('sha1', MESSENGER_APP_SECRET)
 			.update(buf)
 			.digest('hex');
 
